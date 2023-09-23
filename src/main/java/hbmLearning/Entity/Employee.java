@@ -5,55 +5,51 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-@NamedQueries(  
-	    {  
-	        @NamedQuery(  
-	        name = "findEmployeeByName",  
-	        query = "from Holi  where name = :name"  
-	        )  
-	    }  
-	)  
 
-@Entity(name = "Holi")
-//@Table(name = "Holi")
+@Entity//(name="emp18")
+//@Table(name = "emp11")
 public class Employee {
-	@Column(name = "user_name")
+	@Column(name = "emp_name")
 	private String name;
-	@Column(name = "seriousIssue")
-	private String gender;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	@Column(name = "emp_gen")
+	private String gender;
+	@Column
+	private String address;
+	
+	
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	@Override
 	public String toString() {
-		return "Employee [name=" + name + ", gender=" + gender + ", id=" + id + "]";
+		return "Employee [name=" + name + ", id=" + id + ", gender=" + gender + ", address=" + address + "]";
 	}
+	
+	
 	
 }
