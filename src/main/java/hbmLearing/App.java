@@ -1,5 +1,7 @@
 package hbmLearing;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -9,6 +11,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import hbmLearning.Entity.Employee;
+import jakarta.persistence.TypedQuery;
 
 public class App {
 
@@ -23,11 +26,20 @@ public class App {
 		Transaction tx = session.beginTransaction();
 		System.out.println("Staart...");
 		Employee e1 = new Employee();
-//			 e1.setId(1);
-			e1.setName("Lokesh");e1.setGender("male");
-			session.save(e1);
-
-
+		List<Employee> employees= session.createNamedQuery("Employee.findEmployeeById",Employee.class)
+				.setParameter("id", 5)
+				.getResultList();
+		for (Employee employee : employees) {
+			System.out.println("Emp: "+employee);
+		}
+		System.out.println("---------------------------------------------------");
+		
+//		List<Employee> emp= session.createNamedQuery("Employee.findByGender",Employee.class)
+//				.setParameter("gender", "male").getResultList();
+//
+//		for (Employee employee : emp) {
+//			System.out.println("Emp: "+employee);
+//		}
 		tx.commit();
 		session.close();
 		sf.close();
