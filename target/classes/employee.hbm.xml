@@ -3,13 +3,13 @@
 "-//Hibernate/Hibernate Mapping DTD//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="hbmLearning.Entity.Employee" table="gajodhar">
+	<class name="hbmLearning.Entity.Employee" table="ducat_emp">
 		<id name="id">
-			<generator class="sequence" >
+			<generator class="increment" >
 			<param name="sequence">emp_seq</param>
 			</generator>
 		</id>
 		<property name="name" column="user_name"></property>
-		<property name="gender" column="Gender1"></property>
+		<property name="gender" column="gender"></property>
 	</class>
 </hibernate-mapping>
