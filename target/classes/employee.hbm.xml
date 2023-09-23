@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="hbmLearning.Entity.Employee" table="gajodhar">
+		<id name="id">
+			<generator class="sequence" >
+			<param name="sequence">emp_seq</param>
+			</generator>
+		</id>
+		<property name="name" column="user_name"></property>
+		<property name="gender" column="Gender1"></property>
+	</class>
+</hibernate-mapping>
