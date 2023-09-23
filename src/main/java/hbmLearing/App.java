@@ -1,37 +1,83 @@
+
 package hbmLearing;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.boot.Metadata;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import hbmLearning.Entity.Address;
 import hbmLearning.Entity.Employee;
 
 public class App {
-
-	@SuppressWarnings({ "deprecation", "unchecked" })
 	public static void main(String[] args) {
+		System.out.println(">>>>>>>>>>>>>>>>>>");
+		Session session1 = HibernateUtil.getSessionFactory().openSession();
+		System.out.println(">>1>>>>>>>>>>>>>>>");
 
-		// Create typesafe ServiceRegistry object
-		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate1.cfg.xml").build();
-		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
-		SessionFactory sf = meta.getSessionFactoryBuilder().build();
-		Session session = sf.openSession();
-		Transaction tx = session.beginTransaction();
-		System.out.println("Staart...");
+		save(session1);
+//		Employee em =  session1.get(Employee.class, 1);
+//		System.out.println(em);
+//		System.out.println(em.address);
+//		Address add = (Address) session1.get(Address.class, 2);
+//		System.out.println(add);
+//		System.out.println(add.employee);
+
+		fetchAllEmployees(session1);
+//		fetchAllAddress(session1);
+
+		System.out.println("..............Close Session .............");
+		session1.close();
+//		session2.close();
+		System.out.println("<<<<<<<<<<<");
+	}
+
+	@SuppressWarnings("deprecation")
+	private static void fetchAllEmployees(Session session) {
+		System.out.println("...............Employees Fetching...........");
+		List<Employee> resultList = session.createQuery("From Employee", Employee.class).getResultList();
+		resultList.forEach(e -> {
+			System.out.println(e);
+		});
+//		System.out.println(resultList.get(1).getAddress());
+		System.out.println("...............Employees end...........");
+	}
+
+	@SuppressWarnings("deprecation")
+	private static void fetchAllAddress(Session session) {
+		System.out.println("...............Address Fetching..........");
+		List<Address> resultList = session.createQuery("From Address", Address.class).getResultList();
+		resultList.forEach(add -> {
+			System.out.println(add);
+		});
+//		System.out.println(resultList.get(1).employee);
+		System.out.println("...............Address end...........");
+	}
+
+	private static void save(Session session) {
+		Transaction transaction = session.getTransaction();
+		transaction.begin();
+		Employee e = new Employee();
+		e.setFirstName("Rudra");
+		e.setLastName("Rishi");
+		Address address = new Address("sahadara", "Delhi");
+//		address.employee = e;
+		e.setAddress(address);
+
+		session.persist(address);
+		session.persist(e);
 		Employee e1 = new Employee();
-//			 e1.setId(1);
-			e1.setName("Lokesh");e1.setGender("male");
-			session.save(e1);
+		e1.setFirstName("Mihir");
+		e1.setLastName("binoli");
+		Address address1 = new Address("lucknow", "Kanpur");
+//		address1.employee = e1;
+		e1.setAddress(address1);;
 
-
-		tx.commit();
-		session.close();
-		sf.close();
-
+		session.persist(address1);
+		session.persist(e1);
+		transaction.commit();
 	}
 
 }
+
+
