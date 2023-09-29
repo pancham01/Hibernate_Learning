@@ -24,7 +24,6 @@ public class App {
 		em.getAddress().forEach(a -> {
 			System.out.println("address:  "+a);
 		});
-//		System.out.println("address:  "+em.getAddress());
 //		Address add = (Address) session1.get(Address.class, 1);
 //		System.out.println("addd..."+add);
 //		System.out.println("add_emp"+add.getEmployee());

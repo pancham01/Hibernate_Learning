@@ -17,18 +17,16 @@ public final class Employee {
 		// TODO Auto-generated constructor stub
 	}
 
-
 	@Column(name = "emp_name")
 	private String name;
 	@Column(name = "emp_gender")
 	private String gender;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL)
-	 List<Address> address;
-	
-	
+ 
+	@OneToMany(cascade = CascadeType.ALL)
+	List<Address> address;
 
 	public Employee(String name, String gender, int id, List<Address> address) {
 		super();
@@ -38,16 +36,13 @@ public final class Employee {
 		this.address = address;
 	}
 
-	
 	public List<Address> getAddress() {
 		return address;
 	}
 
-
 	public void setAddress(List<Address> address) {
 		this.address = address;
 	}
-
 
 	public String getName() {
 		return name;
@@ -57,7 +52,6 @@ public final class Employee {
 		this.name = name;
 	}
 
-	
 	public String getGender() {
 		return gender;
 	}
@@ -74,13 +68,9 @@ public final class Employee {
 		this.id = id;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Employee [name=" + name + ", gender=" + gender + ", id=" + id + "]";
 	}
 
-	
-
-	
 }

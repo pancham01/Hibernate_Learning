@@ -1,8 +1,6 @@
 package hbmLearning.Entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,12 +9,12 @@ import jakarta.persistence.ManyToOne;
 @Entity(name ="address2")
 public class Address {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	public String street;
 	public String city;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	public Employee employee;
 	
 	public Address() {
