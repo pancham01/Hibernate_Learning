@@ -1,14 +1,14 @@
 package hbmLearning.Entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Transient;
+import jakarta.persistence.ManyToOne;
 
-@Entity(name="emp_add")
+@Entity(name ="address2")
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,9 +16,8 @@ public class Address {
 	public String street;
 	public String city;
 	
-//	@OneToOne
-//	@OneToOne( mappedBy = "address")
-//	public Employee employee;
+	@ManyToOne(cascade = CascadeType.ALL)
+	public Employee employee;
 	
 	public Address() {
 	}
@@ -53,7 +52,13 @@ public class Address {
 		this.city = city;
 	}
 
-	
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 
 	@Override
 	public String toString() {
