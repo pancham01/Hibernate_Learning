@@ -14,27 +14,21 @@ public class App {
 	public static void main(String[] args) {
 		System.out.println(">>>>>>>>>>>>>>>>>>");
 		Session session1 = HibernateUtil.getSessionFactory().openSession();
-//		Session session2 = HibernateUtil.getSessionFactory().openSession();
-		System.out.println(">>1>>>>>>>>>>>>>>>");
 
 		save(session1);
-//		fetchAllEmployees(session1);
 
-		Employee em =  session1.get(Employee.class, 1);
-		System.out.println("employee:  "+em);
+		Employee em = session1.get(Employee.class, 1);
+		System.out.println("employee:  " + em);
 		em.getAddress().forEach(a -> {
-			System.out.println("address:  "+a);
+			System.out.println("address:  " + a);
 		});
-		
+
 		Address add = (Address) session1.get(Address.class, 2);
-		System.out.println("addd..."+add);
-		System.out.println("add_emp"+add.getEmployee());
+		System.out.println("addd..." + add);
+		System.out.println("add_emp" + add.getEmployee());
 		session1.close();
-//		fetchAllAddress(session1);
 		System.out.println("<<<<<<<<<<<");
 	}
-
-
 
 	private static void save(Session session) {
 		Transaction transaction = session.getTransaction();
@@ -64,9 +58,9 @@ public class App {
 		ad.add(a3);
 		ad.add(a4);
 		ad.add(a5);
-		
+
 		e1.setAddress(ad);
-		
+
 		session.persist(e1);
 		transaction.commit();
 	}
