@@ -25,7 +25,7 @@ public final class Employee {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
  
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL)
 	List<Address> address;
 
 	public Employee(String name, String gender, int id, List<Address> address) {

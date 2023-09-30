@@ -1,6 +1,8 @@
 package hbmLearning.Entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,11 +22,15 @@ public class Address {
 	public Address() {
 	}
 
-	public Address(String street, String city) {
+	
+
+	public Address( String street, String city) {
 		super();
 		this.street = street;
 		this.city = city;
 	}
+
+
 
 	public int getId() {
 		return id;
