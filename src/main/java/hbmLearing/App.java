@@ -42,11 +42,7 @@ public class App {
 		Address a3 = new Address("h-4", "Sector 64");
 		Address a4 = new Address("h-40", "Sector 65");
 		Address a5 = new Address("h-410", "Sector 66");
-		a1.setEmployee(e1);
-		a2.setEmployee(e1);
-		a3.setEmployee(e1);
-		a4.setEmployee(e1);
-		a5.setEmployee(e1);
+		
 		session.persist(a1);
 		session.persist(a2);
 		session.persist(a3);

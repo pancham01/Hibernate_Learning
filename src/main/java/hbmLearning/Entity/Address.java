@@ -1,36 +1,32 @@
 package hbmLearning.Entity;
 
-import jakarta.persistence.CascadeType;
+import java.util.List;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
 
-@Entity(name ="address2")
+@Entity(name = "address2")
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	public String street;
 	public String city;
-	
-	@ManyToOne
-	public Employee employee;
-	
+
+	@ManyToMany
+	public List<Employee> employee;
+
 	public Address() {
 	}
 
-	
-
-	public Address( String street, String city) {
+	public Address(String street, String city) {
 		super();
 		this.street = street;
 		this.city = city;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -56,11 +52,13 @@ public class Address {
 		this.city = city;
 	}
 
-	public Employee getEmployee() {
+	
+
+	public List<Employee> getEmployee() {
 		return employee;
 	}
 
-	public void setEmployee(Employee employee) {
+	public void setEmployee(List<Employee> employee) {
 		this.employee = employee;
 	}
 
@@ -69,6 +67,4 @@ public class Address {
 		return "Address [id=" + id + ", street=" + street + ", city=" + city + "]";
 	}
 
-	
-	
 }
