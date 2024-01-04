@@ -23,7 +23,7 @@ public class App {
 //		System.out.println(add);
 //		System.out.println(add.employee);
 
-		fetchAllEmployees(session1);
+//		fetchAllEmployees(session1);
 //		fetchAllAddress(session1);
 
 		System.out.println("..............Close Session .............");
@@ -58,23 +58,23 @@ public class App {
 		Transaction transaction = session.getTransaction();
 		transaction.begin();
 		Employee e = new Employee();
-		e.setFirstName("Rudra");
-		e.setLastName("Rishi");
-		Address address = new Address("sahadara", "Delhi");
+		e.setFirstName("Rudraa");
+		e.setLastName("Rishii");
+		Address address = new Address("sahadaraaa", "Delhi");
 //		address.employee = e;
 		e.setAddress(address);
 
-		session.persist(address);
+//		session.persist(address);
 		session.persist(e);
-		Employee e1 = new Employee();
-		e1.setFirstName("Mihir");
-		e1.setLastName("binoli");
-		Address address1 = new Address("lucknow", "Kanpur");
+//		Employee e1 = new Employee();
+//		e1.setFirstName("Mihir");
+//		e1.setLastName("binoli");
+//		Address address1 = new Address("lucknow", "Kanpur");
 //		address1.employee = e1;
-		e1.setAddress(address1);;
+//		e1.setAddress(address1);;
 
-		session.persist(address1);
-		session.persist(e1);
+//		session.persist(address1);
+//		session.persist(e1);
 		transaction.commit();
 	}
 
