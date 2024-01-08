@@ -31,7 +31,7 @@ public class Employee {
 	
 	private String lastName;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne//(cascade = CascadeType.PERSIST)
 	private Address address;
 	
 	public Address getAddress() {
