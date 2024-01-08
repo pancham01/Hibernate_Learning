@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
 
-@Entity(name="emp_add")
+@Entity
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
