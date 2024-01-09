@@ -15,7 +15,7 @@ public class App {
 		Session session1 = HibernateUtil.getSessionFactory().openSession();
 		System.out.println(">>1>>>>>>>>>>>>>>>");
 
-//		save(session1);
+		save(session1);
 //		Employee em =  session1.get(Employee.class, 1);
 //		System.out.println(em);
 //		System.out.println(em.address);
@@ -23,7 +23,7 @@ public class App {
 //		System.out.println(add);
 //		System.out.println(add.employee);
 
-		fetchAllEmployees(session1);
+//		fetchAllEmployees(session1);
 //		fetchAllAddress(session1);
 
 		System.out.println("..............Close Session .............");
@@ -47,9 +47,9 @@ public class App {
 	private static void fetchAllAddress(Session session) {
 		System.out.println("...............Address Fetching..........");
 		List<Address> resultList = session.createQuery("From Address", Address.class).getResultList();
-		resultList.forEach(add -> {
-			System.out.println(add);
-		});
+		for (Address add : resultList) {
+			System.out.print(add+"     "+add.getEmployee());
+		}
 //		System.out.println(resultList.get(1).employee);
 		System.out.println("...............Address end...........");
 	}
@@ -58,12 +58,12 @@ public class App {
 		Transaction transaction = session.getTransaction();
 		transaction.begin();
 		Employee e = new Employee();
-		e.setFirstName("vishal");
+		e.setFirstName("Kunal");
 		e.setLastName("sharma");
-		Address address = new Address("noida", "UP");
+		Address address = new Address("GZB", "UP");
 //		address.employee = e;
 		e.setAddress(address);
-
+		address.setEmployee(e);
 		session.persist(address);
 		session.persist(e);
 //		Employee e1 = new Employee();
