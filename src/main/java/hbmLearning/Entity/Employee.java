@@ -22,7 +22,7 @@ public final class Employee {
 	@Column(name = "emp_gender")
 	private String gender;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
  
 	@OneToMany(mappedBy = "employee",cascade = CascadeType.ALL)
