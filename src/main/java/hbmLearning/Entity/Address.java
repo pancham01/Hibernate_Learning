@@ -11,7 +11,7 @@ import jakarta.persistence.ManyToMany;
 @Entity(name = "address2")
 public class Address {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	public String street;
 	public String city;
