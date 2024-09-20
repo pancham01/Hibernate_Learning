@@ -18,8 +18,8 @@ public class App {
 		System.out.println(">>1>>>>>>>>>>>>>>>");
 
 		save(session1);
-//		Employee em =  session1.get(Employee.class, 1);
-//		System.out.println(em);
+		Employee em =  session1.get(Employee.class, 1);
+		System.out.println(em);
 //		System.out.println(em.getAddress());
 //		Address add = (Address) session1.get(Address.class, 1);
 //		System.out.println(add);
@@ -62,9 +62,8 @@ public class App {
 		Employee e = new Employee();
 		e.setFirstName("Kunal");
 		e.setLastName("sharma");
-		Address address = new Address("GZB", "UP","IND");
+		Address address = new Address("GZB", "UP");
 		e.setAddress(address);
-		address.setEmployee(e);
 		session.persist(address);
 		session.persist(e);
 		transaction.commit();

@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
 
 @Entity
@@ -14,29 +13,28 @@ public class Address {
 	private int id;
 	public String street;
 	public String city;
-	@Transient
-	public String country;
+//	@Transient
+//	public String country;
 	
-	@OneToOne( mappedBy = "address")
-	public Employee employee;
-	
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
+//	@OneToOne( mappedBy = "address")
+//	public Employee employee;
+//	
+//	public Employee getEmployee() {
+//		return employee;
+//	}
+//
+//	public void setEmployee(Employee employee) {
+//		this.employee = employee;
+//	}
 
 	public Address() {
 	}
 
 	
 
-	public Address( String street, String city, String country) {
+	public Address( String street, String city) {
 		this.street = street;
 		this.city = city;
-		this.country = country;
 	}
 
 	public int getId() {
