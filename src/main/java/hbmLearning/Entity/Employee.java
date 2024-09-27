@@ -10,16 +10,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
-@Entity(name = "employee2")
+@Entity(name = "employee")
 public final class Employee {
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	@Column(name = "emp_name")
 	private String name;
-	@Column(name = "emp_gender")
 	private String gender;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
