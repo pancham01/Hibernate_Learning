@@ -16,7 +16,7 @@ public class App {
 		Session session1 = HibernateUtil.getSessionFactory().openSession();
 
 		save(session1);
-//
+
 //		Employee em = session1.get(Employee.class, 1);
 //		System.out.println("employee:  " + em);
 //		System.out.println(em.getAddress());
