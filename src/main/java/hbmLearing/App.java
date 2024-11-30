@@ -25,8 +25,8 @@ public class App {
 		System.out.println("Staart...");
 
 //		 TypedQuery<Employee> query =session.createNamedQuery("Employee.findEmployeeById",Employee.class);    
-		Query<Employee> query =session.createNamedQuery("Employee.findEmployeeById",Employee.class);    
-		 query.setParameter("id",4);      
+		Query<Employee> query =session.createNamedQuery("Employee.findByGender",Employee.class);    
+		 query.setParameter("gender","male");      
 		 List<Employee> employees=query.getResultList();
 		 System.out.println(employees);
 		 
