@@ -17,9 +17,9 @@ public class App {
 
 		save(session1);
 
-//		Employee em = session1.get(Employee.class, 1);
-//		System.out.println("employee:  " + em);
-//		System.out.println(em.getAddress());
+		Employee em = session1.get(Employee.class, 1);
+		System.out.println("employee:  " + em);
+		System.out.println(em.getAddress());
 //		System.out.println("<<<<<<<<<<By Directional>>>>>>>>>>");
 //
 //		Address add = (Address) session1.get(Address.class, 1);

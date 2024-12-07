@@ -21,7 +21,7 @@ public final class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
  
-	@OneToMany(mappedBy = "employee")
+	@OneToMany//(mappedBy = "employee")
 	List<Address> address;
 
 	public Employee(String name, String gender, int id, List<Address> address) {
