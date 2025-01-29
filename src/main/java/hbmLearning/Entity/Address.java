@@ -14,8 +14,8 @@ public class Address {
 	public String street;
 	public String city;
 	
-//	@ManyToOne
-//	public Employee employee;
+	@ManyToOne
+	public Employee employee;
 	
 	public Address() {
 	}
@@ -54,13 +54,13 @@ public class Address {
 		this.city = city;
 	}
 
-//	public Employee getEmployee() {
-//		return employee;
-//	}
-//
-//	public void setEmployee(Employee employee) {
-//		this.employee = employee;
-//	}
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 
 	@Override
 	public String toString() {
