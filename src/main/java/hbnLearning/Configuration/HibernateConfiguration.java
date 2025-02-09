@@ -30,8 +30,7 @@ public class HibernateConfiguration {
             StandardServiceRegistry registry=new StandardServiceRegistryBuilder().applySettings
             		(properties).build();
             // Create a MetadataSources and add annotated entity classes
-            MetadataSources metadataSources = new MetadataSources(registry);
-            metadataSources.addAnnotatedClass(hbmLearning.Entity.Employee.class);
+            MetadataSources metadataSources = new MetadataSources(registry).addAnnotatedClass(hbmLearning.Entity.Employee.class);
             // Create a SessionFactory
             SessionFactory sessionFactory = metadataSources.buildMetadata().buildSessionFactory();
 
