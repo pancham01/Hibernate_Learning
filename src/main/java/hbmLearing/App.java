@@ -22,21 +22,18 @@ public class App {
 		SessionFactory sf = meta.getSessionFactoryBuilder().build();
 		Session session = sf.openSession();
 		Transaction tx = session.beginTransaction();
-		System.out.println("Staart...");
 
-//		 TypedQuery<Employee> query =session.createNamedQuery("Employee.findEmployeeById",Employee.class);    
-		Query<Employee> query =session.createNamedQuery("Employee.findByGender",Employee.class);    
-		 query.setParameter("gender","male");      
-		 List<Employee> employees=query.getResultList();
-		 System.out.println(employees);
-		 
-		 System.out.println();
-		 
-		 
-		 Query<Employee> q = session.createNamedQuery("Employee.findByGender",Employee.class);
-		 q.setParameter("gender", "male");
-		 List<Employee> employees2=q.list();
-		 System.out.println(employees2);
+		Query<Employee> query = session.createNamedQuery("Employee.findEmployeeById", Employee.class);
+		query.setParameter("id", "1");
+		List<Employee> employees = query.getResultList();
+		System.out.println(employees);
+
+		System.out.println();
+
+		Query<Employee> q = session.createNamedQuery("Employee.findByGender", Employee.class);
+		q.setParameter("gender", "male");
+		List<Employee> employees2 = q.list();
+		System.out.println(employees2);
 		tx.commit();
 		session.close();
 		sf.close();
