@@ -29,6 +29,7 @@ public class App {
 //		List list=query1.list();  
 //		System.out.println(list);
 //		
+//		HQL to get records with pagination
 //		query1.setFirstResult(2);
 //		query1.setMaxResults(15);
 //		List list2 = query1.list();
@@ -41,12 +42,6 @@ public class App {
 //		List<Integer> list1=q.list();  
 //		System.out.println(list1);  
 		
-//		HQL to get records with pagination
-//		Query query2=session.createQuery("from Employee");  
-//		query2.setFirstResult(5);  
-//		query2.setMaxResults(5);  
-//		List list2=query2.list(); 
-//		System.out.println("5 to 10: "+list2);
 		
 //		HQL update query Using Named Parameters
 //		Query q=session.createQuery("update Employee set name=:n where id=:i");  
