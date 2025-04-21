@@ -24,7 +24,7 @@ public class App {
 		Transaction tx = session.beginTransaction();
 
 		Query<Employee> query = session.createNamedQuery("Employee.findEmployeeById", Employee.class);
-		query.setParameter("id", "1");
+		query.setParameter("id", "5");
 		List<Employee> employees = query.getResultList();
 		System.out.println(employees);
 
@@ -32,9 +32,8 @@ public class App {
 
 		Query<Employee> q = session.createNamedQuery("Employee.findByGender", Employee.class);
 		q.setParameter("gender", "male");
-		List<Employee> employees2 = q.list();
-		System.out.println(employees2);
-		tx.commit();
+		System.out.println(q.list());
+//		tx.commit();
 		session.close();
 		sf.close();
 
