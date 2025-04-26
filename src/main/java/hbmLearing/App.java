@@ -17,7 +17,7 @@ public class App {
 		Session session1 =sf.openSession();
 		System.out.println(">>1>>>>>>>>>>>>>>>");
 
-		save(session1);
+//		save(session1);
 		Employee em =  session1.get(Employee.class, 1);
 		System.out.println(em);
 //		System.out.println(em.getAddress());
