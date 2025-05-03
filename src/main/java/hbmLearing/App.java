@@ -1,97 +1,45 @@
 
 package hbmLearing;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import hbmLearning.Entity.Address;
 import hbmLearning.Entity.Employee;
 
 public class App {
 	public static void main(String[] args) {
-		System.out.println(">>>>>>>>>>>>>>>>>>");
-		Session session1 = HibernateUtil.getSessionFactory().openSession();
+		// Create configuration and build session factory
+        Configuration cfg = new Configuration().configure();
+        SessionFactory factory = cfg.buildSessionFactory();
 
-		save(session1);
+        // Create session
+        Session session = factory.openSession();
+        session.beginTransaction();
 
-		Employee em = session1.get(Employee.class, 1);
-		System.out.println("employee:  " + em);
-		em.getAddress().forEach(a -> {
-			System.out.println("address:  " + a);
-		});
+        // Create addresses
+        Address address1 = new Address("New York");
+        Address address2 = new Address("San Francisco");
 
-//		Address add = (Address) session1.get(Address.class, 2);
-//		System.out.println("addd..." + add);
-//		System.out.println("add_emp" + add.getEmployee());
-		session1.close();
-		System.out.println("<<<<<<<<<<<");
-	}
+        // Create employees
+        Employee emp1 = new Employee("John Doe");
+        Employee emp2 = new Employee("Jane Smith");
 
-	private static void save(Session session) {
-		Transaction transaction = session.getTransaction();
-		transaction.begin();
-		Employee e1 = new Employee();
-		e1.setName("Beenu");
-		e1.setGender("male");
+        // Establish many-to-many relationships
+        emp1.addAddress(address1);
+        emp1.addAddress(address2);
 
-		Employee e2 = new Employee();
-		e2.setName("Kunal");
-		e2.setGender("male");
-		
-		Employee e3 = new Employee();
-		e3.setName("Nisha");
-		e3.setGender("female");
+        emp2.addAddress(address1);  // shared address
 
-		Employee e4 = new Employee();
-		e4.setName("Lokesh");
-		e4.setGender("male");
+        // Save employees (cascades addresses)
+        session.persist(emp1);
+        session.persist(emp2);
 
-		Employee e5 = new Employee();
-		e5.setName("Diksha");
-		e5.setGender("female");
-		List<Employee> emp_list = new ArrayList<>();
-		emp_list.add(e1);
-		emp_list.add(e2);
-		emp_list.add(e3);
-		emp_list.add(e4);
-		emp_list.add(e5);
+        session.getTransaction().commit();
+        session.close();
 
-		Address a1 = new Address("h-430", "Sector 62");
-		Address a2 = new Address("h-43", "Sector 63");
-		Address a3 = new Address("h-4", "Sector 64");
-		Address a4 = new Address("h-40", "Sector 65");
-		Address a5 = new Address("h-410", "Sector 66");
-
-		session.persist(a1);
-		session.persist(a2);
-		session.persist(a3);
-		session.persist(a4);
-		session.persist(a5);
-		List<Address> ad = new ArrayList<>();
-		ad.add(a1);
-		ad.add(a2);
-		ad.add(a3);
-		ad.add(a4);
-		ad.add(a5);
-		e2.setAddress(ad);
-		e1.setAddress(ad);
-		a1.setEmployee(emp_list);
-		a2.setEmployee(emp_list);
-		session.persist(e1);
-		session.persist(e2);
-		session.persist(e3);
-		session.persist(e4);
-		session.persist(e5);
-		session.persist(a1);
-		session.persist(a2);
-		session.persist(a3);
-		session.persist(a4);
-		session.persist(a5);
-		
-		transaction.commit();
+        factory.close();
 	}
 
 }

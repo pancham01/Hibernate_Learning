@@ -1,47 +1,44 @@
 package hbmLearning.Entity;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 
-@Entity(name = "employee2")
-public final class Employee {
-	public Employee() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+@Entity
+@Table(name = "employees")
+public class Employee {
 
-	@Column(name = "emp_name")
-	private String name;
-	@Column(name = "emp_gender")
-	private String gender;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
- 
-	@ManyToMany//(mappedBy = "employee")
-	List<Address> address;
+	private Long id;
 
-	public Employee(String name, String gender, int id, List<Address> address) {
-		super();
+	private String name;
+
+	// Many-to-Many relationship with Address
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "employee_address", joinColumns = @JoinColumn(name = "employee_id"), inverseJoinColumns = @JoinColumn(name = "address_id"))
+	private Set<Address> addresses = new HashSet<>();
+
+	// Constructors
+	public Employee() {
+	}
+
+	public Employee(String name) {
 		this.name = name;
-		this.gender = gender;
-		this.id = id;
-		this.address = address;
 	}
 
-	public List<Address> getAddress() {
-		return address;
-	}
-
-	public void setAddress(List<Address> address) {
-		this.address = address;
+	// Getters and setters
+	public Long getId() {
+		return id;
 	}
 
 	public String getName() {
@@ -52,25 +49,16 @@ public final class Employee {
 		this.name = name;
 	}
 
-	public String getGender() {
-		return gender;
+	public Set<Address> getAddresses() {
+		return addresses;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setAddresses(Set<Address> addresses) {
+		this.addresses = addresses;
 	}
 
-	public int getId() {
-		return id;
+	public void addAddress(Address address) {
+		this.addresses.add(address);
+		address.getEmployees().add(this); // ensure bi-directional mapping
 	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	@Override
-	public String toString() {
-		return "Employee [name=" + name + ", gender=" + gender + ", id=" + id + "]";
-	}
-
 }

@@ -8,40 +8,35 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 
-@Entity(name = "address2")
+import jakarta.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "addresses")
 public class Address {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	public String street;
-	public String city;
+	private Long id;
 
-	@ManyToMany
-	public List<Employee> employee;
+	private String city;
 
+	// Many-to-Many mapped by Employee
+	@ManyToMany(mappedBy = "addresses")
+	private Set<Employee> employees = new HashSet<>();
+
+	// Constructors
 	public Address() {
 	}
 
-	public Address(String street, String city) {
-		super();
-		this.street = street;
+	public Address(String city) {
 		this.city = city;
 	}
 
-	public int getId() {
+	// Getters and setters
+	public Long getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getStreet() {
-		return street;
-	}
-
-	public void setStreet(String street) {
-		this.street = street;
 	}
 
 	public String getCity() {
@@ -52,19 +47,11 @@ public class Address {
 		this.city = city;
 	}
 
-	
-
-	public List<Employee> getEmployee() {
-		return employee;
+	public Set<Employee> getEmployees() {
+		return employees;
 	}
 
-	public void setEmployee(List<Employee> employee) {
-		this.employee = employee;
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
 	}
-
-	@Override
-	public String toString() {
-		return "Address [id=" + id + ", street=" + street + ", city=" + city + "]";
-	}
-
 }
