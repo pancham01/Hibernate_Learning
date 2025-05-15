@@ -1,8 +1,22 @@
 package hbmLearning.Entity;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import jakarta.persistence.Cacheable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Employee {
 	private String name;
 	private String gender;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	public String getName() {
@@ -33,5 +47,5 @@ public class Employee {
 	public String toString() {
 		return "Employee [name=" + name + ", gender=" + gender + ", id=" + id + "]";
 	}
-	
+
 }
