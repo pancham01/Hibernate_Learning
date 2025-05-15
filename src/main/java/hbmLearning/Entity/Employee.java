@@ -9,7 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity
+@Entity(name = "temp")
 @Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Employee {
