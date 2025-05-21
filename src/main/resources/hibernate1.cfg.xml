@@ -4,16 +4,17 @@
 
 <hibernate-configuration>
 	<session-factory>
-		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-		<!-- <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property> -->
-		<property name="connection.url">jdbc:mysql://localhost:3306/mic</property>
+		<property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/harsh</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password">root</property>
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
 		<property name="hbm2ddl.auto">update</property>
 		<property name="hibernate.cache.use_second_level_cache">true</property>
-		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property>
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.jcache.JCacheRegionFactory</property>
+		<property name="hibernate.javax.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</property>
 		<mapping class="hbmLearning.Entity.Employee" />
 	</session-factory>
 
