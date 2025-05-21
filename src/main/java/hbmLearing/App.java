@@ -20,22 +20,21 @@ public class App {
 		System.out.println("Staart...");
 		Employee e1 = new Employee();
 //			 e1.setId(1);
-		e1.setName("Lokesh");
-		e1.setGender("male");
-		session.persist(e1);
-		tx.commit();
+//		e1.setName("Lokesh");
+//		e1.setGender("male");
+//		session.persist(e1);
+//		tx.commit();
 
-//		Employee employee = session.get(Employee.class, 1);
-//		System.out.println(employee);
-//		session.close();
+		Employee employee = session.get(Employee.class, 1);
+		System.out.println(employee);
+		session.close();
 //
-//		Session session2 = sf.openSession();
-//		Employee employee2 = session.get(Employee.class, 1);
-//		System.out.println(employee2);
+		Session session2 = sf.openSession();
+		Employee employee2 = session.get(Employee.class, 1);
+		System.out.println(employee2);
 		session.close();
 
 		sf.close();
-
 	}
 
 }
