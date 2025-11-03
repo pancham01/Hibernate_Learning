@@ -9,6 +9,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.MutationQuery;
 import org.hibernate.query.Query;
 
 import hbmLearning.Entity.Employee;
@@ -31,9 +32,8 @@ public class App {
 //		
 //		HQL to get records with pagination
 //		query1.setFirstResult(2);
-//		query1.setMaxResults(15);
-//		List list2 = query1.list();
-//		System.out.println(list2);
+//		query1.setMaxResults(5);
+//		System.out.println(query1.list());
 		
 		
 		
@@ -45,17 +45,17 @@ public class App {
 		
 //		HQL update query Using Named Parameters
 //		Query q=session.createQuery("update Employee set name=:n where id=:i");  
-//		q.setParameter("n","Anshit");  
+//		q.setParameter("n","Pankaj");  
 //		q.setParameter("i",1);  
 //		System.out.println("status: "+q.executeUpdate());  
 
 //		HQL delete query
-		Query query=session.createQuery("delete from Employee where id= 9");  
+		MutationQuery query=session.createMutationQuery("delete from Employee where id = 2");  
 		query.executeUpdate();  
 		
-		Query query1=session.createQuery("from Employee");
-		List list=query1.list();  
-		System.out.println(list);
+//		Query query1=session.createQuery("from Employee");
+//		List list=query1.list();  
+//		System.out.println(list);
 
 		tx.commit();
 		session.close();
