@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
 
 @Entity
 public class Address {
@@ -13,9 +12,9 @@ public class Address {
 	private int id;
 	public String street;
 	public String city;
+	
 //	@Transient
 //	public String country;
-	
 //	@OneToOne( mappedBy = "address")
 //	public Employee employee;
 //	
